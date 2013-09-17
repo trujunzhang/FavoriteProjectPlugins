@@ -24,20 +24,24 @@
     <!-- Component's actions -->
     <actions>
         <!-- We use "PluginName.ComponentName.ActionName" notation for "id" to avoid conflicts -->
-        <action id="ActionsSample.ActionsPlugin.GarbageCollection" class="com.favorite.GarbageCollectionAction"
-                text="Collect _garbage" description="Run garbage collector">
-            <keyboard-shortcut first-keystroke="control alt G" second-keystroke="C" keymap="$default"/>
-            <mouse-shortcut keystroke="ctrl alt button2" keymap="$default"/>
+        <action id="Actions.ActionsPlugin.FavoriteConfigEditorAction"
+                class="com.favorite.FavoriteConfigEditorAction"
+                text="Edit configure"
+                description="  "
+                >
         </action>
 
+        <action id="Actions.ActionsPlugin.ShowFavoriteFilesAction"
+                class="com.favorite.ShowFavoriteFilesAction"
+                text="show favorite list"
+                icon="/general/add.png"
+                description="">
+            <keyboard-shortcut first-keystroke="control x" second-keystroke="control c" keymap="$default"/>
+        </action>
 
-        <action id="Actions.ActionsPlugin.HelloWorld1" class="com.favorite.ShowFavoriteFilesAction" text="Hello World"
-                icon="/general/add.png" description=""/>
-
-        <group id="Actions.ActionsPlugin.SampleGroup" text="Favorites" description="Sample group">
-            <reference ref="ActionsSample.ActionsPlugin.GarbageCollection"/>
-            <separator/>
-            <reference ref="Actions.ActionsPlugin.HelloWorld1"/>
+        <group id="Actions.ActionsPlugin.SampleGroup" text="Favorites" description="">
+            <reference ref="Actions.ActionsPlugin.FavoriteConfigEditorAction"/>
+            <reference ref="Actions.ActionsPlugin.ShowFavoriteFilesAction"/>
 
             <!--adds this group to the main menu-->
             <add-to-group group-id="MainMenu" anchor="before" relative-to-action="VcsGroups"/>
@@ -46,9 +50,8 @@
             <add-to-group group-id="MainToolBar" anchor="before" relative-to-action="HelpTopics"/>
         </group>
 
-        <!--the group below contains only the "Hello World" action defined above -->
         <group>
-            <reference ref="Actions.ActionsPlugin.HelloWorld1"/>
+            <reference ref="Actions.ActionsPlugin.ShowFavoriteFilesAction"/>
             <!--the group is added to the editor popup menu-->
             <add-to-group group-id="EditorPopupMenu" anchor="after" relative-to-action="CutCopyPasteGroup"/>
         </group>

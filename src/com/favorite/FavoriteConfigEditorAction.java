@@ -22,10 +22,10 @@ import com.intellij.openapi.actionSystem.Presentation;
 
 import javax.swing.*;
 
-public class GarbageCollectionAction extends AnAction {
+public class FavoriteConfigEditorAction extends AnAction {
   private ImageIcon myIcon;
 
-  public GarbageCollectionAction() {
+  public FavoriteConfigEditorAction() {
     super("GC", "Run garbage collection", null);
   }
 
@@ -38,7 +38,7 @@ public class GarbageCollectionAction extends AnAction {
     Presentation presentation = event.getPresentation();
     if (ActionPlaces.MAIN_TOOLBAR.equals(event.getPlace())) {
       if (myIcon == null) {
-        java.net.URL resource = GarbageCollectionAction.class.getResource("/icons/garbage.png");
+        java.net.URL resource = FavoriteConfigEditorAction.class.getResource("/icons/garbage.png");
         myIcon = new ImageIcon(resource);
       }
       presentation.setIcon(myIcon);
