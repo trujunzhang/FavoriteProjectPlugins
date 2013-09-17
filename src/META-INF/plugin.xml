@@ -11,11 +11,6 @@
     <!-- Plugin's vendor -->
     <vendor>djzhang</vendor>
 
-    <!-- the IDEA build number which works with plugin -->
-    <!--
-  <idea-version since-build="2000" />
-         -->
-    <!-- Plugin's application components -->
     <application-components>
         <component>
             <!-- Component's implementation class -->
@@ -35,8 +30,6 @@
             <mouse-shortcut keystroke="ctrl alt button2" keymap="$default"/>
         </action>
 
-        <action id="Actions.ActionsPlugin.OpenProject" class="com.favorite.ShowFavoriteFilesAction"
-                text="open project"/>
 
         <action id="Actions.ActionsPlugin.HelloWorld1" class="com.favorite.ShowFavoriteFilesAction" text="Hello World"
                 icon="/general/add.png" description=""/>
