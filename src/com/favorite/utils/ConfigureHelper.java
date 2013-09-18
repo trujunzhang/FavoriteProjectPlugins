@@ -21,22 +21,42 @@ public final class ConfigureHelper {
 
     public static List<String> getPaths(String xmlPath, Project project) {
 
+        List<String> paths = new LinkedList<String>();
+
+        SaxParseProjectService.FavoriteList favoriteList = null;
         /**
          * 保存具体内容，下次自动离线加载
          */
         SaxParseProjectService sax = new SaxParseProjectService();
         try {
             InputStream is = new FileInputStream(xmlPath);
-            SaxParseProjectService.FavoriteList favoriteList = sax.parse(is);
-            List<String> favoritePaths = favoriteList.favoritePaths;
-            HashMap<String, String> favoriteEnviron = favoriteList.favoriteEnviron;
+            favoriteList = sax.parse(is);
+            paths = getList(favoriteList);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        List<String> paths = new LinkedList<String>();
-
         return paths;
     }
+
+    private static List<String> getList(SaxParseProjectService.FavoriteList favoriteList) {
+        List<String> projectPaths = new LinkedList<String>();
+
+        List<String> favoritePaths = favoriteList.favoritePaths;
+        HashMap<String, String> favoriteEnviron = favoriteList.favoriteEnviron;
+
+        for (String key : favoriteEnviron.keySet()) {
+            projectPaths = new LinkedList<String>();
+            String value = favoriteEnviron.get(key);
+            for (String path : favoritePaths) {
+                String token = String.format("${%s}", key);
+                projectPaths.add(path.replace(token, value));
+            }
+            favoritePaths = projectPaths;
+        }
+
+        return favoritePaths;
+    }
+
 
 }

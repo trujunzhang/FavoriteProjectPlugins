@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application>
+
+    <component name="FavoriteProjectsManager">
+
+        <option name="favoriteEnviron">
+            <list>
+                <option name="DevIntellijIdea"
+                        value="/Volumes/SHARE/MacSystem/Home/Users/djzhang/DevIntellijIdea"/>
+            </list>
+        </option>
+        <option name="favoritePaths">
+            <list>
+                <option value="${DevIntellijIdea}/gdsjprojects/enterpriseTemplate/mobile/android/enterIdAndroid/branches/jsonEnterIDAndroid"/>
+                <option value="${DevIntellijIdea}/gdsjprojects/enterpriseTemplate/mobile/android/enterIdAndroid/trunk"/>
+            </list>
+        </option>
+
+    </component>
+
+</application>
+
