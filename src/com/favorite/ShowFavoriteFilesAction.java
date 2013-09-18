@@ -19,6 +19,7 @@
  */
 package com.favorite;
 
+import com.favorite.utils.ConfigureHelper;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -31,14 +32,31 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class ShowFavoriteFilesAction extends FavoriteBaseShowRecentFilesAction {
+
+    ///Volumes/SHARE/MacSystem/Home/Users/djzhang/
+    private static final String FAVORITE_CONFIGURE_PATH = "/Dropbox/MacSystem/intellij idea/FavoriteProjectPluins/";
+
     protected VirtualFile[] filesToShow(Project project) {
-        return getChangedFiles();
+        String userHome = System.getenv("HOME");
+
+        StringBuilder xmlPathBuilder = new StringBuilder();
+        xmlPathBuilder.append(userHome);
+        xmlPathBuilder.append(FAVORITE_CONFIGURE_PATH);
+
+        String osName = System.getProperty("os.name").toLowerCase();
+        if (osName.contains("mac")) {
+            xmlPathBuilder.append("mac");
+        }
+        xmlPathBuilder.append(".xml");
+        return getChangedFiles(project, xmlPathBuilder.toString());
     }
 
-    public VirtualFile[] getChangedFiles() {
+    public VirtualFile[] getChangedFiles(Project project, String xmlPath) {
         List<VirtualFile> files = new ArrayList<VirtualFile>();
 
-        final List<String> paths = getFavoriteProjects();
+        final List<String> paths = ConfigureHelper.getPaths(xmlPath, project);
+
+        paths.add(xmlPath);
         for (String path : paths) {
             File currentFile = new File(path);
             final VirtualFile file = new CoreLocalVirtualFile(new CoreLocalFileSystem(), currentFile);
@@ -54,6 +72,7 @@ public class ShowFavoriteFilesAction extends FavoriteBaseShowRecentFilesAction {
         List<String> projects = new LinkedList<String>();
         projects.add("/Volumes/SHARE/MacSystem/Home/Users/djzhang/DevIntellijIdea/maven-web/springmvctomcat01");
         projects.add("/Volumes/SHARE/MacSystem/Home/Users/djzhang/DevIntellijIdea/maven-web/springmvcbossexample01");
+        projects.add("/Volumes/SHARE/MacSystem/Home/Users/djzhang/DevIntellijIdea/openproject/github/OpenSources/ideaIC-129.354-0k/build.xml");
         return projects;
     }
 

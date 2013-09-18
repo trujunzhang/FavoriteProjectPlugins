@@ -56,7 +56,8 @@ public abstract class FavoriteBaseShowRecentFilesAction extends AnAction impleme
     private static final Color BORDER_COLOR = Gray._135;
 
     public void actionPerformed(AnActionEvent e) {
-        show(PlatformDataKeys.PROJECT.getData(e.getDataContext()));
+        Project project = PlatformDataKeys.PROJECT.getData(e.getDataContext());
+        show(project);
     }
 
     public void update(AnActionEvent event) {
@@ -132,11 +133,21 @@ public abstract class FavoriteBaseShowRecentFilesAction extends AnAction impleme
                 Object[] values = list.getSelectedValues();
                 for (Object value : values) {
                     VirtualFile file = (VirtualFile) value;
+                    if (file.isDirectory()) {
+                        String path = file.getPath();
+                        ProjectUtil.openOrImport(path, project, false);
+                    } else {
+                        FileEditorManager.getInstance(project).openFile(file, true, true);
+                    }
                     //String path = "/Volumes/SHARE/MacSystem/Home/Users/djzhang/NetBeansProjects/intellijPlugDemo";
-                    String path = file.getPath();
+                    //String path = file.getPath();
                     //final Project project = PlatformDataKeys.PROJECT.getData(e.getDataContext());
-                    ProjectUtil.openOrImport(path, project, false);
+
                     //FileEditorManager.getInstance(project).openFile(file, true, true);
+
+
+                    //OpenFileAction.openFile(file, project);
+
                 }
             }
         };
