@@ -5,16 +5,36 @@
 
         <option name="favoriteEnviron">
             <list>
-                <option name="DevIntellijIdea"
-                        value="/Volumes/SHARE/MacSystem/Home/Users/djzhang/DevIntellijIdea"/>
+                <option name="DevIntellijIdea" value="/Volumes/SHARE/MacSystem/Home/Users/djzhang/DevIntellijIdea"/>
+                <option name="wanghaogithub720"
+                        value="/Volumes/SHARE/MacSystem/Home/Users/djzhang/DevIntellijIdea/openproject/github/wanghaogithub720"/>
             </list>
         </option>
         <option name="favoritePaths">
             <list>
-                <option value="${DevIntellijIdea}/gdsjprojects/enterpriseTemplate/mobile/android/enterIdAndroid/branches/jsonEnterIDAndroid"/>
-                <option value="${DevIntellijIdea}/gdsjprojects/enterpriseTemplate/mobile/android/enterIdAndroid/trunk"/>
+                <!--DevIntellijIdea-->
+                <option name="jsonEnterIDAndroid"
+                        value="${DevIntellijIdea}/gdsjprojects/enterpriseTemplate/mobile/android/enterIdAndroid/branches/jsonEnterIDAndroid"/>
+                <option name="enterpriseTemplate.enterIdAndroid.trunk"
+                        value="${DevIntellijIdea}/gdsjprojects/enterpriseTemplate/mobile/android/enterIdAndroid/trunk"/>
+                <option name="BirtvAndroidClient.trunk"
+                        value="${DevIntellijIdea}/gdsjprojects/birtvEnterprise/Android/BirtvAndroidClient/trunk"/>
+                <!--github-->
+                <option name="AndEngineExamples-GLES2"
+                        value="${DevIntellijIdea}/openproject/github/android/andengine/AndEngineExamples-GLES2"/>
+                <!--wanghaogithub720-->
+                <option name="android-app"
+                        value="${wanghaogithub720}/android-app"/>
+                <option name="jeesite"
+                        value="${wanghaogithub720}/jeesite"/>
+                <option name="FavoriteProjectPlugins"
+                        value="${wanghaogithub720}/FavoriteProjectPlugins"/>
+                <option name="androidtutorial"
+                        value="${wanghaogithub720}/androidtutorial"/>
+
             </list>
         </option>
+
 
     </component>
 
